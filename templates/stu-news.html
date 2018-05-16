@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>学生新闻 - 信息与控制工程学院</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <h2>学生新闻</h2>
+                    <i></i>
+                </div>
+                <div>
+                    <ul>
+                        {% for i in range(0, length) %}
+                        <li>
+                            <a href="article?id={{ i }}" target="_blank" method="GET">
+                                <h3>{{ titles[i] }}</h3>
+                                <!--
+                                <div class="pic">
+                                    <img width="100" height="75" src="">
+                                </div>
+                                -->
+                            </a>
+                            <div>
+                                <p>
+                                    {{ times[i] }}
+                                </p>
+                            </div>
+                            
+                        </li>
+                        {% endfor %}
+                    <div>
+                        <a href="javascript:;">点击加载更多
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div>Powered by 大学生易信发展中心</div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
