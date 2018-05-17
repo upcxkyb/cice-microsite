@@ -25,6 +25,14 @@ def get_titles(html):
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find_all('div', style='white-space:nowrap')
 
+    global times, titles, hrefs
+    if times:
+        times = []
+    if titles:
+        titles = []
+    if hrefs:
+        hrefs = []
+
     for div in divs:
         times.append(div.string)
         a = div.parent.previous_sibling.previous_sibling.a
@@ -106,7 +114,6 @@ def get_content(i):
             
     author_tag_soup.find('span').string = author
     post_content = post_content + str(author_tag_soup)
-
 
     return render_template('article.html', content=post_content, title=titles[i])
 
