@@ -9,6 +9,10 @@ source_url = 'http://auto.upc.edu.cn'
 titles = []
 hrefs = []
 times = []
+img_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: center;"><img src="http://yfs01.fs.yiban.cn/web/5572667/catch/363d222917ce66f4f896ca52fc810cd5.jpg" style="float:none;opacity:1;" alt="upc_xkyb.jpg"/></p>'
+img_title_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: center;"><span style="font-family: 宋体, SimSun; font-size: 14px; color: rgb(0, 0, 0);">图片标题</span></p>'
+content_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: left; text-indent: 2em;"><span style="color: rgb(0, 0, 0); font-family: 宋体, SimSun; font-size: 16px;">信控易班工作站</span></p>'
+autor_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: right;"><span style="font-size: 16px; font-family: 宋体, SimSun; color: rgb(0, 0, 0);">【作者：信控易班工作站】</span><br/></p>'
 
 def get_html(url):
     headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
@@ -21,7 +25,7 @@ def get_html(url):
     except:
         print('网页获取失败')
 
-def get_titles(html):
+def get_titles(html, section):
     soup = BeautifulSoup(html, 'html.parser')
     divs = soup.find_all('div', style='white-space:nowrap')
 
@@ -41,15 +45,9 @@ def get_titles(html):
 
     length = len(titles)
 
-    return render_template('stu-news.html', titles=titles, times=times, length=length)
+    return render_template('article-list.html', titles=titles, times=times, length=length, section=section)
 
 def get_content(i):
-    img_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: center;"><img src="http://yfs01.fs.yiban.cn/web/5572667/catch/363d222917ce66f4f896ca52fc810cd5.jpg" style="float:none;opacity:1;" alt="upc_xkyb.jpg"/></p>'
-    img_title_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: center;"><span style="font-family: 宋体, SimSun; font-size: 14px; color: rgb(0, 0, 0);">图片标题</span></p>'
-    content_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: left; text-indent: 2em;"><span style="color: rgb(0, 0, 0); font-family: 宋体, SimSun; font-size: 16px;">信控易班工作站</span></p>'
-    autor_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: right;"><span style="font-size: 16px; font-family: 宋体, SimSun; color: rgb(0, 0, 0);">【作者：信控易班工作站】</span><br/></p>'
-
-
     article_html = get_html(hrefs[i])
     article_soup = BeautifulSoup(article_html, 'html.parser')
     text = article_soup.find('div', 'Article_Content')
@@ -57,6 +55,7 @@ def get_content(i):
     imgs = []
     img_titles = []
     contents = []
+    author = ''
 
     for p in ps:
         if p.img != None:
@@ -111,7 +110,7 @@ def get_content(i):
     for j in range(0, len(contents)):
         content_tag_soup.find('span').string = contents[j]
         post_content = post_content + str(content_tag_soup)
-            
+
     author_tag_soup.find('span').string = author
     post_content = post_content + str(author_tag_soup)
 
@@ -126,18 +125,21 @@ def index():
 
 @app.route('/notice/')
 def notice():
-    return render_template('notice.html')
+    html = get_html('http://auto.upc.edu.cn/_t140/4057/list.htm')
+    return get_titles(html, '通知公告')
 
 @app.route('/stu-news/')
 def stu_news():
     html = get_html('http://auto.upc.edu.cn/_t140/4056/list1.htm')
-    return get_titles(html)
+    return get_titles(html, '学生新闻')
 
 @app.route('/cice-news/')
 def cice_news():
-    return render_template('cice-news.html')
+    return render_template('article-list.html')
 
+@app.route('/notice/article')
 @app.route('/stu-news/article')
+@app.route('/cice-news/article')
 def article():
     if request.method == 'GET':
         i = request.args.get('id')
