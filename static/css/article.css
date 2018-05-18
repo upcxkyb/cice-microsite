@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding:0
+}
+body {
+    background: #ebebeb;
+}
+
+img {
+    width:80%;
+    text-align: center;
+}
+h1 {
+    font-size: 1.6em;
+    margin-bottom: 4%
+}
+.content {
+    margin:5% 5%;
+    padding:2% 3%;
+    background-color: #ffffff;
+}
+.header {
+    padding: 4%;
+    background-color: #2da25a;
+    color: #fafffa
+}
+footer {
+    text-align: center;
+    padding:2%;
+    color: #737373;
+    font-size: smaller;
+}

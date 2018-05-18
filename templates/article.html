@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ title }} - 信息与控制工程学院</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/article.css">
 </head>
 <body>
-    <h1 style="text-align:center">{{ title }}</h1>
+    <div class="header">
+        <h2>文章详情</h2>
+    </div>
+    <div class="content">
+    <h1 class="title" style="text-align:center">{{ title }}</h1>
     {{ content|safe }}
+    </div>
+    <footer>
+    <div>©Powered by 大学生易信发展中心</div>
+    </footer>
 </body>
 </html>

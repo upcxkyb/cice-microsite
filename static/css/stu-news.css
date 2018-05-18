@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding:0;
+    list-style: none;
+    text-decoration: none
+}
+
+a {
+    color: #2c2c2c;
+}
+.header {
+    padding: 4%;
+    background-color: #2da25a;
+    color: #fafffa
+}
+
+li {
+    padding: 3% 5%;
+    border-bottom: 1px solid rgba(239, 240, 242, 0.8)
+}
+p {
+    color: #787474;
+    margin-top:1%;
+    font-size: smaller;
+}
+.more-info {
+    text-align: center;
+    padding:2%;
+    border-bottom: 1px solid rgba(239, 240, 242, 0.8)
+}
+
+footer {
+    text-align: center;
+    padding:2%;
+    color: #737373;
+    font-size: smaller;
+}
