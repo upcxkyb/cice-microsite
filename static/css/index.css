@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding:0
+}
+a {
+    text-decoration: none;
+    color: azure;
+    font-size:1.1em;
+}
+
+img {
+    overflow: hidden
+}
+body {
+    height:100%
+}
+.logo {
+    width:96%;
+    height:20%;
+    display: table-cell;
+    padding-top: 2%;
+    text-align: center;
+    /*border-radius: 20px;*/
+}
+.logo-img {
+    border-radius: 8px;
+    width: 88%;
+    margin-top: 2%
+}
+
+.notice a{
+    position: absolute;
+    top:50%;
+    transform: translateY(-40%)
+}
+
+.stu-news a,.news a, .intro a,.student a,.club a{
+    position: absolute;
+    top:50%;
+    left:35%;
+    transform: translateY(-50%)
+}
+.intro a{
+    left: 19%
+}
+.student a{
+    left: 82%
+}
+.club a{
+    left: 16%
+}
+.notice-img ,.stu-news img, .news img,.party img {
+    position: absolute;
+    left:10%;
+    top:50%;
+    transform: translate(0%,-50%);
+}
+.party img{
+    left:32%;
+    top: 60%
+}
+.intro-icon{
+    position: absolute;
+    left:5%;
+    top:50%;
+    transform: translate(0%,-50%);
+}
+.intro-img{
+    left: 40%;
+    position: absolute;
+    top:50%;
+    transform: translate(0%,-50%);
+    border-radius: 8px;
+}
+
+/*信控学子*/
+.student-icon{
+    position: absolute;
+    left:65%;
+    top:50%;
+    transform: translate(0%,-50%);
+}
+.student-img{
+    left: 2%;
+    position: absolute;
+    top:50%;
+    transform: translate(0%,-50%);
+    border-radius: 8px;
+}
+
+/*社团*/
+.club-icon{
+    position: absolute;
+    left:2%;
+    top:50%;
+    transform: translate(0%,-50%);
+}
+.club-img{
+    left: 35%;
+    position: absolute;
+    top:50%;
+    transform: translate(0%,-50%);
+    border-radius: 8px;
+}
+
+.notice{
+    width: 45%;
+    height: 30%;
+    background-color: #ff437e;
+    position: relative;
+    left: 2%;
+    top: 2%;
+    border-radius: 8px;
+    float: left;
+    margin: 5px 5px;
+    text-align: center
+}
+
+
+.stu-news, .news, .party{
+    width: 45%;
+    height: 14%;
+    background-color: #11b4ff;
+    position: relative;
+    left: 2%;
+    top: 2%;
+    border-radius: 8px;
+    float: left;
+    margin: 5px 5px;
+    text-align: center
+}
+.party{
+    width:24%;
+    height:15%;
+    background-color: #ab3128;
+}
+.news{
+    height: 14%;
+    background-color: #ffb037;
+}
+.containers {
+    /*background-color: #a299a5;*/
+    width: 96%;
+    height: 72%;
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,0%);
+    border-radius: 8px
+}
+
+
+.intro ,.student,.club{
+    background-color: #0f7f0d;
+    width: 92%;
+    height: 17%;
+    position: relative;
+    left: 2%;
+    top: 2%;
+    border-radius: 8px;
+    float: left;
+    margin: 5px 5px;
+}
+.student{
+    height: 15%;
+    background-color: #19267f;
+}
+
+.club{
+    width: 65%;
+    height: 15%;
+    background-color: #227f76;
+}
+
+.footer {
+    position:fixed;
+    display: block;
+    text-align: center;
+    top:96%;
+    width:100%
+}
