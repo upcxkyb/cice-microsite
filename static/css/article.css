@@ -2,6 +2,9 @@
     margin: 0;
     padding:0
 }
+a{
+    text-decoration: none
+}
 body {
     background: #ebebeb;
 }
@@ -29,4 +32,12 @@ footer {
     padding:2%;
     color: #737373;
     font-size: smaller;
+}
+
+.header a img{
+    width:25px;
+    display: inline-block;
+}
+.header h2{
+    display: inline-block
 }

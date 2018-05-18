@@ -35,3 +35,11 @@ footer {
     color: #737373;
     font-size: smaller;
 }
+
+.header a img{
+    width:25px;
+    display: inline-block;
+}
+.header h2{
+    display: inline-block
+}
