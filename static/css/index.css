@@ -23,7 +23,7 @@ body {
     /*border-radius: 20px;*/
 }
 .logo-img {
-    border-radius: 8px;
+    /* border-radius: 8px; */
     width: 88%;
     margin-top: 2%
 }
@@ -70,7 +70,7 @@ body {
     position: absolute;
     top:50%;
     transform: translate(0%,-50%);
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 /*信控学子*/
@@ -85,7 +85,7 @@ body {
     position: absolute;
     top:50%;
     transform: translate(0%,-50%);
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 /*社团*/
@@ -100,7 +100,7 @@ body {
     position: absolute;
     top:50%;
     transform: translate(0%,-50%);
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 .notice{
@@ -110,7 +110,7 @@ body {
     position: relative;
     left: 2%;
     top: 2%;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     float: left;
     margin: 5px 5px;
     text-align: center
@@ -124,7 +124,7 @@ body {
     position: relative;
     left: 2%;
     top: 2%;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     float: left;
     margin: 5px 5px;
     text-align: center
@@ -145,7 +145,7 @@ body {
     position: absolute;
     left:50%;
     transform: translate(-50%,0%);
-    border-radius: 8px
+    /* border-radius: 8px */
 }
 
 
@@ -156,7 +156,7 @@ body {
     position: relative;
     left: 2%;
     top: 2%;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     float: left;
     margin: 5px 5px;
 }
