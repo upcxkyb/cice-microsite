@@ -9,6 +9,9 @@ source_url = 'http://auto.upc.edu.cn'
 titles = []
 hrefs = []
 times = []
+cice_titles = []
+cice_hrefs = []
+cice_times = []
 img_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: center;"><img src="http://yfs01.fs.yiban.cn/web/5572667/catch/363d222917ce66f4f896ca52fc810cd5.jpg" style="float:none;opacity:1;" alt="upc_xkyb.jpg"/></p>'
 img_title_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: center;"><span style="font-family: 宋体, SimSun; font-size: 14px; color: rgb(0, 0, 0);">图片标题</span></p>'
 content_tag = '<p style="font-size: 14px; white-space: normal; background-color: rgb(255, 255, 255); text-align: left; text-indent: 2em;"><span style="color: rgb(0, 0, 0); font-family: 宋体, SimSun; font-size: 16px;">信控易班工作站</span></p>'
@@ -116,7 +119,32 @@ def get_content(i):
 
     return render_template('article.html', content=post_content, title=titles[i])
 
+def get_cice_titles(html, section):
+    soup = BeautifulSoup(html, 'html.parser')
+    a_tags = soup.find_all('a', href=re.compile('page.htm'))
 
+    global times, titles, hrefs
+    if times:
+        times = []
+    if titles:
+        titles = []
+    if hrefs:
+        hrefs = []
+
+    for a_tag in a_tags:
+        titles.append(a_tag['title'])
+        hrefs.append(source_url + a_tag['href'])
+
+        time_str = str(re.search(r'/\d+/\d+/', str(a_tag['href'])).group(0))
+        time_str = list(re.sub(r'/', '', time_str))
+        time_str.insert(4, '-')
+        time_str.insert(7, '-')
+        time_str = ''.join(time_str)
+        times.append(time_str)
+
+    length = len(titles)
+
+    return render_template('article-list.html', titles=titles, times=times, length=length, section=section)
 
 
 @app.route('/')
@@ -125,27 +153,43 @@ def index():
 
 @app.route('/notice/')
 def notice():
-    html = get_html('http://auto.upc.edu.cn/_t140/4057/list.htm')
+    html = get_html('http://auto.upc.edu.cn/_t140/4057/list1.htm')
     return get_titles(html, '通知公告')
 
 @app.route('/stu-news/')
 def stu_news():
-    html = get_html('http://auto.upc.edu.cn/_t140/4056/list1.htm')
-    return get_titles(html, '学生新闻')
+    html = get_html('http://auto.upc.edu.cn/3938/list1.htm')
+    return get_cice_titles(html, '学生新闻')
 
 @app.route('/cice-news/')
 def cice_news():
-    return render_template('article-list.html')
+    html = get_html('http://auto.upc.edu.cn/3930/list1.htm')
+    return get_cice_titles(html, '学院新闻')
+
+@app.route('/intro/')
+def organization():
+    return render_template('intro.html')
+
+@app.route('/club/')
+def club():
+    return render_template('club.html')
+
+@app.route('/stu-party/')
+def stu_party():
+    html = get_html('http://auto.upc.edu.cn/_t140/4000/list1.htm')
+    return get_titles(html, '学生党建')
 
 @app.route('/notice/article')
 @app.route('/stu-news/article')
 @app.route('/cice-news/article')
+@app.route('/stu-party/article')
 def article():
     if request.method == 'GET':
         i = request.args.get('id')
         i = int(i)
-
         return get_content(i)
+    else:
+        render_template('404.html')
 
         
 
